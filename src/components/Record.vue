@@ -21,20 +21,27 @@ export default {
     .record {
         width: calc(20% - 40px);
         background-color: #2e3a46;
-        height: 300px;
-        margin: 0 20px;
+        margin: 0 20px 30px;
+        padding: 20px;
         text-align: center;
+        transition: all .1s ease;
+        cursor: pointer;
         img {
-            width: 80%;
-            margin: 15px 0;
+            width: 100%;
+            margin-bottom: 20px;
         }
         h3 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: white;
+            font-size: 1rem;
         }
         span {
             display: block;
             color: #777d7a;
+            font-size: .9rem;
+        }
+        &:hover {
+            transform: scale(1.03);
         }
 
     }

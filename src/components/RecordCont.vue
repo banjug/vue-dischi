@@ -31,7 +31,6 @@ export default {
             .get(this.apiUrl)
             .then((result) => {
                 this.recordList = result.data.response
-                // console.log(result.data.response);
             })
         }
     }
