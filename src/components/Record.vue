@@ -1,15 +1,18 @@
 <template>
     <div class="record">
-        <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
-        <h3>NEW JERSEY</h3>
-        <span>Bon Jovi</span>
-        <span>1988</span>
+        <img :src="details.poster" :alt="details.title">
+        <h3>{{details.title.toUpperCase()}}</h3>
+        <span>{{details.author}}</span>
+        <span>{{details.year}}</span>
     </div>
 </template>
 
 <script>
 export default {
   name: 'Record',
+  props: {
+      details: Object,
+  }
 }
 </script>
 

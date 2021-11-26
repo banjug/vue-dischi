@@ -1,15 +1,39 @@
 <template>
     <main>
-        <Record/>
+        <Record
+            v-for="record, i in recordList"
+            :key="i"
+            :details="record"
+        />
     </main>
 </template>
 
 <script>
 import Record from '@/components/Record.vue'
+import axios from "axios";
 export default {
     name: 'RecordCont',
     components: {
         Record
+    },
+    data() {
+        return {
+            apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
+            recordList: [],
+        }
+    },
+    created() {
+        this.getRecord();
+    },
+    methods: {
+        getRecord() {
+            axios
+            .get(this.apiUrl)
+            .then((result) => {
+                this.recordList = result.data.response
+                // console.log(result.data.response);
+            })
+        }
     }
 }
 </script>
