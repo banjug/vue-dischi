@@ -1,7 +1,9 @@
 <template>
     <main>
+        <!-- componente della selezione, importa il valore selezionato e avvia il metodo changeSelect -->
         <GenreSelection @selectedGenre="changeSelect"/>
         <section>
+            <!-- vfor che stampa la lista filtrata, con details (è un prop) dice al componente figlio di prendersi i dati del singolo oggetto -->
             <Record
                 v-for="record, i in filteredRecordList"
                 :key="i"
@@ -30,10 +32,12 @@ export default {
             selectedGenre : ''
         }
     },
+    // alla creazione della pagina richiama getRecord per ottenere i dati degli elementi dall'api 
     created() {
         this.getRecord();
     },
     computed : {
+        // filtra l'array degli elementi della pagina in base al valore di selectedGenre, impostato con il metodo changeSelect
         filteredRecordList(){
             if (this.selectedGenre === 'all') {
                 return this.recordList
@@ -45,6 +49,7 @@ export default {
         }
     },
     methods: {
+        // importa con axios dall'api l'array di dati di ogni elemento da stampare e li salva nell'array recordList (nei data)
         getRecord() {
             axios
             .get(this.apiUrl)
@@ -52,6 +57,7 @@ export default {
                 this.recordList = result.data.response
             })
         },
+        // imposta selectedGenre(valore salvato nei data) con il valore della selezione dell'utente
         changeSelect(selezione){
             this.selectedGenre = selezione
             console.log(this.selectedGenre);

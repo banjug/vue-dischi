@@ -1,5 +1,6 @@
 <template>
     <div class="record">
+        <!-- i dati dell'oggetto vengono richiamati tramite detail, prop richiamato dal componente padre  -->
         <img :src="details.poster" :alt="details.title">
         <h3>{{details.title.toUpperCase()}}</h3>
         <span>{{details.author}}</span>
@@ -11,6 +12,7 @@
 export default {
   name: 'Record',
   props: {
+    //   detils richiama l'oggetto del vfor del componente padre 
       details: Object,
   }
 }
