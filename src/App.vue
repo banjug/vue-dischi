@@ -13,7 +13,7 @@ import RecordCont from './components/RecordCont.vue'
 export default {
   name: 'App',
   components: {
-    RecordCont
+    RecordCont,
   }
 }
 </script>
@@ -42,5 +42,8 @@ export default {
       height: 100%;
     }
   }
+
+  
+
 }
 </style>

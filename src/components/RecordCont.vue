@@ -1,20 +1,27 @@
 <template>
     <main>
-        <Record
-            v-for="record, i in recordList"
-            :key="i"
-            :details="record"
-        />
+        <GenreSelection/>
+        <section>
+            <Record @selectedGenre="changeSelect"
+                v-for="record, i in filteredRecordList"
+                :key="i"
+                :details="record"
+            />
+        </section>
     </main>
 </template>
 
+
+
 <script>
 import Record from '@/components/Record.vue'
+import GenreSelection from '@/components/GenreSelection.vue'
 import axios from "axios";
 export default {
     name: 'RecordCont',
     components: {
-        Record
+        Record,
+        GenreSelection,
     },
     data() {
         return {
@@ -25,6 +32,17 @@ export default {
     created() {
         this.getRecord();
     },
+    computed : {
+        filteredRecordList(){
+            if (this.selectedGenre === 'all') {
+                return this.recordList
+            }
+
+            return this.recordList.filter((item) => {
+                return item.genre.includes(this.selectedGenre)
+            })
+        }
+    },
     methods: {
         getRecord() {
             axios
@@ -32,6 +50,10 @@ export default {
             .then((result) => {
                 this.recordList = result.data.response
             })
+        },
+        changeSelect(selezione){
+            this.selectedGenre = selezione
+            console.log(this.selectedGenre);
         }
     }
 }
@@ -41,11 +63,13 @@ export default {
 <style scoped lang="scss">
 
 main {
-    width: 80%;
-    margin: 50px auto 0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    section {
+        width: 80%;
+        margin: 50px auto 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 }
 
 </style>
