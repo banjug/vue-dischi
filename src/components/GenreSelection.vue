@@ -2,7 +2,7 @@
     <div class="select">
       Seleziona un genere musicale:
       <select name="genre" id="genre" v-model="userSelect" @change="$emit('selectedGenre', userSelect)">
-        <option value="all" selected>Tutti</option>
+        <option value="all">Tutti</option>
         <option value="Rock">Rock</option>
         <option value="Pop">Pop</option>
         <option value="Jazz">Jazz</option>

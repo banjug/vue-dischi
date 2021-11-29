@@ -1,8 +1,8 @@
 <template>
     <main>
-        <GenreSelection/>
+        <GenreSelection @selectedGenre="changeSelect"/>
         <section>
-            <Record @selectedGenre="changeSelect"
+            <Record
                 v-for="record, i in filteredRecordList"
                 :key="i"
                 :details="record"
@@ -27,6 +27,7 @@ export default {
         return {
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
             recordList: [],
+            selectedGenre : ''
         }
     },
     created() {
