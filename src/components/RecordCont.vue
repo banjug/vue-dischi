@@ -39,12 +39,12 @@ export default {
     computed : {
         // filtra l'array degli elementi della pagina in base al valore di selectedGenre, impostato con il metodo changeSelect
         filteredRecordList(){
-            if (this.selectedGenre === 'all') {
+            if (this.chosen === 'all') {
                 return this.recordList
             }
 
             return this.recordList.filter((item) => {
-                return item.genre.includes(this.selectedGenre)
+                return item.genre.includes(this.chosen)
             })
         }
     },
@@ -57,10 +57,10 @@ export default {
                 this.recordList = result.data.response
             })
         },
-        chosenGenre(){
-            this.selectedGenre = this.chosen;
-            console.log(this.selectedGenre);
-    }
+        // chosenGenre(){
+        //     this.selectedGenre = this.chosen;
+        //     console.log(this.selectedGenre);
+        // }
         
     }
 }
@@ -76,6 +76,10 @@ main {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        &::after {
+            content: '';
+            flex: auto;
+        }
     }
 }
 
