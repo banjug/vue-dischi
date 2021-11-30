@@ -2,7 +2,9 @@
     <div class="select">
       Seleziona un genere musicale:
       <!-- $emit manda il valore della selezione al componente padre per generare solo gli elementi selezionati -->
-      <select name="genre" id="genre" v-model="userSelect" @change="$emit('selectedGenre', userSelect)">
+      <select name="genre" id="genre" 
+      v-model="userSelect" 
+      @change="$emit('selectedGenre', userSelect)">
         <option value="all">Tutti</option>
         <option value="Rock">Rock</option>
         <option value="Pop">Pop</option>

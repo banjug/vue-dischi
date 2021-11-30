@@ -1,25 +1,36 @@
 <template>
   <div id="app">
-    <div class="logo-cont">
-      <img src="./assets/spotify.png" alt="">
-    </div>
+    <Header 
+    @genreFilter="chosenGenre"/>
     <RecordCont/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import RecordCont from './components/RecordCont.vue'
 
 export default {
   name: 'App',
   components: {
     RecordCont,
+    Header
+  },
+  data() {
+    return {
+      chosen: ''
+    }
+  },
+  methods: {
+    chosenGenre(selezione){
+      this.chosen = selezione;
+      console.log(selezione);
+    }
   }
 }
 </script>
 
 <style lang="scss">
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -34,16 +45,5 @@ export default {
   background-color: #1e2d3b;
   height: 100vh;
   width: 100vw;
-  .logo-cont {
-    height: 70px;
-    padding: 10px 20px;
-    background-color: #2e3a46;
-    img {
-      height: 100%;
-    }
-  }
-
-  
-
 }
 </style>

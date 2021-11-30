@@ -1,7 +1,6 @@
 <template>
     <main>
         <!-- componente della selezione, importa il valore selezionato e avvia il metodo changeSelect -->
-        <GenreSelection @selectedGenre="changeSelect"/>
         <section>
             <!-- vfor che stampa la lista filtrata, con details (è un prop) dice al componente figlio di prendersi i dati del singolo oggetto -->
             <Record
@@ -17,19 +16,16 @@
 
 <script>
 import Record from '@/components/Record.vue'
-import GenreSelection from '@/components/GenreSelection.vue'
 import axios from "axios";
 export default {
     name: 'RecordCont',
     components: {
         Record,
-        GenreSelection,
     },
     data() {
         return {
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
             recordList: [],
-            selectedGenre : ''
         }
     },
     // alla creazione della pagina richiama getRecord per ottenere i dati degli elementi dall'api 
@@ -57,11 +53,7 @@ export default {
                 this.recordList = result.data.response
             })
         },
-        // imposta selectedGenre(valore salvato nei data) con il valore della selezione dell'utente
-        changeSelect(selezione){
-            this.selectedGenre = selezione
-            console.log(this.selectedGenre);
-        }
+        
     }
 }
 </script>
