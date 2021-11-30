@@ -22,10 +22,14 @@ export default {
     components: {
         Record,
     },
+    props: {
+        chosen: String
+    },
     data() {
         return {
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
             recordList: [],
+            selectedGenre: '',
         }
     },
     // alla creazione della pagina richiama getRecord per ottenere i dati degli elementi dall'api 
@@ -53,6 +57,10 @@ export default {
                 this.recordList = result.data.response
             })
         },
+        chosenGenre(){
+            this.selectedGenre = this.chosen;
+            console.log(this.selectedGenre);
+    }
         
     }
 }

@@ -2,7 +2,8 @@
   <div id="app">
     <Header 
     @genreFilter="chosenGenre"/>
-    <RecordCont/>
+    <RecordCont
+    :chosen="chosen"/>
   </div>
 </template>
 
@@ -22,9 +23,9 @@ export default {
     }
   },
   methods: {
-    chosenGenre(selezione){
-      this.chosen = selezione;
-      console.log(selezione);
+    chosenGenre(selected){
+      this.chosen = selected;
+      console.log(this.chosen);
     }
   }
 }
